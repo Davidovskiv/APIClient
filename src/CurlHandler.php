@@ -6,12 +6,13 @@ use CurlHandle;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Utils;
+use Psr\Http\Message\ResponseInterface;
 
 class CurlHandler
 {
     public $ch;
 
-    public function sendRequest(Request $request)
+    public function sendRequest(Request $request): CurlHandle
     {
         $this->ch = curl_init();
         $options = [
@@ -35,7 +36,7 @@ class CurlHandler
         return $this->ch;
     }
 
-    public function getResponse(CurlHandle $curl)
+    public function getResponse(CurlHandle $curl): ResponseInterface
     {
         $status_code = curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
         $request_time = curl_getinfo($curl, CURLINFO_TOTAL_TIME);

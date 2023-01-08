@@ -48,7 +48,7 @@ class APIClient
         string $id = NULL,
         array $data,
         string $auth = NULL
-    )
+    ): mixed 
     {
         $data = json_encode($data);
         $this->auth($auth);
@@ -72,7 +72,7 @@ class APIClient
         string $id = NULL,
         array $data,
         string $auth = NULL
-    )
+    ): mixed
     {
         $data = json_encode($data);
         $this->auth($auth);
@@ -90,7 +90,7 @@ class APIClient
         string $resource,
         string $id = NULL,
         string $auth = NULL
-    ): int|string
+    ): mixed
     {
         $this->auth($auth);
         $this->getUrl($resource, $id);
